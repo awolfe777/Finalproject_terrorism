@@ -13,13 +13,13 @@ My questions for the data set
 #4 What weapons are the deadliest?
 
 # Analysis/Visualizations
-#1 What terrorist groups have killed the most people?
+## #1 What terrorist groups have killed the most people?
 
 ![Groups-1](https://user-images.githubusercontent.com/95449976/206513925-3edb5363-ab0a-4b0c-9388-93cf06ac9104.png)
 
 The deadliest groups are the Islamic State of Iraq and the Levant(ISIL) with 38,923. ISIL is a large terrorist group that originated in Iraq. Next is the Taliban who originated from Afghanistan with a still large death toll of 29,410. Third Boko Haram mostly originates from Nigeria. Fourth Shining Path a communist group from Peru and if combined fifth would be Al-Qaida the group behind 9/11.
 
-#2 Has terrorism increased or decreased over the past 50 years as well as what incidents have caused the most devastation?
+## #2 Has terrorism increased or decreased over the past 50 years as well as what incidents have caused the most devastation?
 
 ![Overall terroirsm-1](https://user-images.githubusercontent.com/95449976/206345605-348bf63d-14ca-4470-904e-c9b857395367.png)
 
@@ -35,13 +35,13 @@ Rewanda genocide 1994
 Iraq war many different events in a short time 2014/2015
 Al-Shabaab in Somalia 2019
 
-#3 Where have terrorists targeted the most in the United States?
+## #3 Where have terrorists targeted the most in the United States?
 
 ![United States map-1](https://user-images.githubusercontent.com/95449976/206514095-8e026d25-e61d-4008-bb4b-38e1bcbff0c5.png)
 
 There was a total of 253 different cases that occurred in the United state. Of those 253 over 50% were located in eastern states. As well we can see that of the western events most of which were located in Los Angeles and San Francisco. The largest events were 9/11 and the OKC bombing which had the most casualties. Overall this made me realize how little the United States is affected by terrorism as compared to other countries.
 
-#4 What weapons are the deadliest?
+## #4 What weapons are the deadliest?
 
 ![Weapon-1](https://user-images.githubusercontent.com/95449976/206514150-8b6818a2-5d80-4d1f-a725-1ceb97e529ab.png)
 
