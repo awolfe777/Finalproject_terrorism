@@ -58,7 +58,7 @@ order <- maybe %>%
 arrange(desc(V1))
 order
 worst25<- head(order, n=25)
-#1
+#Question 1
 graph25 <- ggplot(data = worst25) +
   geom_col(mapping = aes(x = reorder(gname , +V1), y = V1, fill= gname))+
   theme(legend.position = "none") +
