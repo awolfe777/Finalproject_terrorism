@@ -59,7 +59,7 @@ There was a total of 253 different cases that occurred in the United states. Of 
 ![Weapon-1](https://user-images.githubusercontent.com/95449976/206514150-8b6818a2-5d80-4d1f-a725-1ceb97e529ab.png)
 
 
-This is a close race between firearms and explosives. Firearms are no doubt the most common weapon but, it is surprising, that organizations such as these have so much access to explosives and other forms of weapons such as chemicals, sabotage equipment, biological weapons, and radiological weapons. It is also interested to see that in over 180,000 observations one person was so unlucky enough to be killed by a fake weapon.
+This is a close race between firearms and explosives. Firearms are no doubt the most common weapon but, it is surprising that organizations such as these have so much access to explosives and other forms of weapons such as chemicals, sabotage equipment, biological weapons, and radiological weapons. It is also interested to see that in over 180,000 observations one person was so unlucky enough to be killed by a fake weapon.
 
 
 # Conclusion
