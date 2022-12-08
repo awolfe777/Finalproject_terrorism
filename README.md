@@ -1,12 +1,12 @@
 # Introduction
 
-My dataset is based on global terrorism data from 1970-2020. This data set includes 135 different variables. Most of which are supporting variables to others. The main variables that I used in my project were iyear, imonth, iday which I later turned into a single variable date. counrty, country_txt(name of country), region, region_txt(name of region), provstate(exp: Missouri), city, latitude, longitude, gname(group name), nkill(number killed), weaptype1, and  weaptype1_txt(weapon type in text). Most of the other variables I either found had little data or did not find much importance to the data.
+My dataset is based on global terrorism data from 1970-2020. This data set includes 135 different variables. Most of which are supporting variables to others. The main variables that I used in my project were iyear, imonth, iday which I later turned into a single variable date. counrty, country_txt(name of country), region, region_txt(name of region), provstate(exp: Missouri), city, latitude, longitude, gname(group name), nkill(number killed), weaptype1, and  weaptype1_txt(weapon type in text). Most of the other variables I found either had little data or did not find much importance to the data.
 
 My questions for the data set
 
 #1 What terrorist groups have killed the most people?
 
-#2 Has terrorism increased or decreased over the past 50 years as well as what incidents have caused the most devastation?
+#2 Has terrorism increased or decreased over the past 50 years, as well as what incidents have caused the most devastation?
 
 #3 Where have terrorists targeted the most in the United States?
 
@@ -20,16 +20,16 @@ My questions for the data set
 ![Groups-1](https://user-images.githubusercontent.com/95449976/206513925-3edb5363-ab0a-4b0c-9388-93cf06ac9104.png)
 
 
-The deadliest groups are the Islamic State of Iraq and the Levant(ISIL) with 38,923. ISIL is a large terrorist group that originated in Iraq. Next is the Taliban who originated from Afghanistan with a still large death toll of 29,410. Third Boko Haram mostly originates from Nigeria. Fourth Shining Path a communist group from Peru and if combined fifth would be Al-Qaida the group behind 9/11.
+The deadliest groups are the Islamic State of Iraq and the Levant(ISIL) with 38,923. ISIL is a large terrorist group that originated in Iraq. Next is the Taliban who originated from Afghanistan with a still large death toll of 29,410. Third, Boko Haram mostly originates from Nigeria. Fourth, Shining Path a communist group from Peru and if combined fifth would be Al-Qaida the group behind 9/11.
 
 
-## #2 Has terrorism increased or decreased over the past 50 years as well as what incidents have caused the most devastation?
+## #2 Has terrorism increased or decreased over the past 50 years, as well as what incidents have caused the most devastation?
 
 
 ![Overall terroirsm-1](https://user-images.githubusercontent.com/95449976/206345605-348bf63d-14ca-4470-904e-c9b857395367.png)
 
 
-Looking at the past 50 years it is clear that terrorism has not decreased instead it seems that within the past 20 years, in general, terrorism has increased in frequency as well as large-scale events are more devastating.
+Looking at the past 50 years it is clear that terrorism has not decreased, instead it seems that within the past 20 years, in general, terrorism has increased in frequency as well as large-scale events are more devastating.
 
 
 ![Overall terroirsm-2](https://user-images.githubusercontent.com/95449976/206345663-b1c3446e-49e8-4049-b198-64069345ac7b.png)
@@ -50,7 +50,7 @@ Al-Shabaab in Somalia 2019
 ![United States map-1](https://user-images.githubusercontent.com/95449976/206514095-8e026d25-e61d-4008-bb4b-38e1bcbff0c5.png)
 
 
-There was a total of 253 different cases that occurred in the United state. Of those 253 over 50% were located in eastern states. As well we can see that of the western events most of which were located in Los Angeles and San Francisco. The largest events were 9/11 and the OKC bombing which had the most casualties. Overall this made me realize how little the United States is affected by terrorism as compared to other countries.
+There was a total of 253 different cases that occurred in the United states. Of those 253 over 50% were located in eastern states. As well we can see that of the western events, most of which were located in Los Angeles and San Francisco. The largest events were 9/11 and the OKC bombing which had the most casualties. Overall this made me realize how little the United States is affected by terrorism as compared to other countries.
 
 
 ## #4 What weapons are the deadliest?
