@@ -1,0 +1,232 @@
+---
+title: "Final project"
+author: "Austin"
+date: "11/26/2022"
+output: 
+  html_document:
+    keep_md: TRUE
+editor_options: 
+  chunk_output_type: console
+---
+
+
+```{r}
+library(tidyverse)
+library(downloader)
+library(readxl)
+library(dplyr)
+library(lubridate)
+library(data.table)
+library(maps)
+library(USAboundaries)
+library(ggsflabel)
+library(sf)
+library(tmap)
+library(rnaturalearth)
+```
+
+```{r}
+dat <- read_csv("globalterrorismdb_0718dist.csv")
+head(dat)
+tail(dat)
+```
+terroist organization
+```{r Groups}
+second <- select(dat, gname, nkill)
+head(second)
+tail(second)
+
+third <- second %>%
+  select(nkill, gname) %>%
+  arrange(gname) %>%
+  filter(gname != "Unknown")
+head(third)
+tail(third)
+
+no_zero1 <- third %>% 
+  filter(nkill != 0)
+head(no_zero1)
+
+by_cyl <- no_zero1 %>% group_by(gname)
+by_cyl
+
+
+
+DT <- data.table(no_zero1)
+maybe <- DT[, sum(nkill), by = gname]
+order <- maybe %>%
+arrange(desc(V1))
+order
+worst25<- head(order, n=25)
+#1
+graph25 <- ggplot(data = worst25) +
+  geom_col(mapping = aes(x = reorder(gname , +V1), y = V1, fill= gname))+
+  theme(legend.position = "none") +
+  labs(title = "Group death toll") +
+  ylab("Deaths") +
+  xlab("Group name")
+graph25 + coord_flip()
+
+#I want to add numbers at the end of the col before using it as well take off the index need to add labels
+
+worst10 <- head(order, n=10)
+worst10
+gggraph <- ggplot(data = worst10) +
+  geom_col(mapping = aes(x = reorder(gname, +V1), y = V1))
+gggraph+ coord_flip()
+```
+overall deaths
+```{r Overall terroirsm}
+ newdate <- dat %>%
+  select(iyear, imonth, iday, nkill, country_txt) %>%
+  mutate(date = make_datetime(iyear, imonth, iday))
+  head(newdate)
+
+newdate_ordered<- newdate %>%
+  select(date, nkill, country_txt) %>%
+  arrange(date)
+head(newdate_ordered)
+
+no_zero <- newdate_ordered %>% 
+  filter(nkill != 0)
+head(no_zero)
+
+na.omit(no_zero)
+#2
+World <- ggplot(no_zero, aes(x = date, y = nkill)) +            # Draw ggplot2 plot
+  geom_line()+ 
+  labs(title = "Terrorism from 1970-2020") +
+  ylab("Deaths") +
+  xlab("Date")+
+  theme_bw()
+World
+#this is weird that there is a gap from somewhere in 1994
+
+
+five_largest_events<- no_zero %>%
+  filter(country_txt %in%  c("Iraq", "United States", "Rwanda","Somalia","Iran"))
+
+fivegraph <- ggplot(five_largest_events, aes(x = date, y = nkill, color= country_txt)) +            # Draw ggplot2 plot
+  geom_line()+ 
+    labs(title = "Terrorism worst events from 1970-2020") +
+  ylab("Deaths") +
+  xlab("Date")+
+  theme_bw()
+fivegraph
+#Cinema Rex fire Iraq 1978
+#Rewanda genocide 1994
+#9/11/2000
+#Iraq war many diffrent things
+
+
+
+Top_5 <- no_zero %>%
+  filter(country_txt %in%  c("Afghanistan", "Iraq", "Somalia", "United States", "Syria", "Rwanda"))
+Top_5
+
+Topgraph <- ggplot(Top_5, aes(x = date, y = nkill, color= country_txt)) +            # Draw ggplot2 plot
+  geom_line()+ 
+  theme_bw()
+Topgraph
+
+Top_10 <- no_zero %>%
+   filter(country_txt %in%  c("Afghanistan", "Iraq", "Somalia", "Burkina Faso", "Syria", "Nigeria", "Mali", "Niger", "Myanmar", "Pakistan"))
+
+Top10graph <- ggplot(Top_10, aes(x = date, y = nkill, color= country_txt)) +            # Draw ggplot2 plot
+  geom_line()+ 
+  theme_bw()
+Top10graph
+
+#us
+US_only <- no_zero %>%
+  filter(country_txt == "United States")
+US_only
+USgraph <- ggplot(US_only, aes(x = date, y = nkill)) +            # Draw ggplot2 plot
+  geom_line()+ 
+  theme_bw()
+USgraph
+```
+united states
+```{r United States map}
+dat2 <-  dat %>%
+  select(country_txt, city, nkill, iyear, imonth, iday, longitude, latitude, provstate, region_txt) %>%
+  mutate(date = make_datetime(iyear, imonth, iday))
+head(dat2)
+citys <- dat2 %>%
+  select(country_txt,city, nkill, date, longitude, latitude, provstate, region_txt)
+citys
+
+united <- citys %>%
+  filter(country_txt == "United States")
+united
+tail(united, n=20)
+united1 <- united %>%
+  filter(city != "Unknown")
+united2 <- united1 %>%
+  filter(provstate != "Alaska")
+united2
+united3 <- united2 %>%
+  filter(provstate != "Hawaii")
+united3
+united4 <- united3 %>%
+  filter(provstate != "Puerto Rico")
+united4
+
+fixed <- united4 %>%
+  filter(nkill != 0)
+fixed
+ordered <- fixed %>%
+  arrange(desc(nkill))
+ordered
+
+mapready <- fixed %>%
+  select(city, nkill, date, longitude ,latitude)
+head(mapready)
+#need to put onto map
+states <- sf::st_as_sf(map("state", plot = FALSE, fill = TRUE))
+newcord <- ordered %>% st_as_sf( coords = c("longitude", "latitude"), crs=4326)
+new <- st_transform(newcord, crs=2163)
+head(newcord)
+USgraph <- ggplot() +
+  geom_sf(data = states, aes(fill= 'White'))+ 
+  geom_sf(data = new,aes(size= nkill))+
+  theme(legend.position = "none") +
+  theme(panel.grid.major = element_line(color = "black", linetype = 2))+
+  labs(title = "United States event map") +
+  ylab("") +
+  xlab("")
+USgraph
+  
+```
+kills by weapon type
+```{r Weapon}
+weapondata <- dat %>%
+  select(weaptype1, weaptype1_txt,gname, nkill )
+weapondata
+
+
+weaopon <- weapondata %>%
+  arrange(weaptype1)
+weaopon
+no_unknown <- weaopon %>%
+  filter(weaptype1_txt != "Unknown")
+no_unknown
+yes <- no_unknown %>%
+  filter(nkill != "0")
+yes
+DT <- data.table(yes)
+maybe1 <- DT[, sum(nkill), by = weaptype1_txt]
+head(maybe1)
+order1 <- maybe1 %>%
+arrange(desc(V1))
+order1
+
+crack <- ggplot(data = order1) +
+  geom_col(mapping = aes(x = reorder(weaptype1_txt , +V1), y = V1, fill=weaptype1_txt))+
+  theme(legend.position = "none") +
+  labs(title = "Most used Weapons") +
+  ylab("Deaths") +
+  xlab("Weapon")
+crack + coord_flip()
+```
+
